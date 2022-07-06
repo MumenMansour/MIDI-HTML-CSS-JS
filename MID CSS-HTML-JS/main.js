@@ -2,8 +2,9 @@
 //declaraçao de parenteses em funçao e obrigatorio
 //tudo o que entrar dentro das chaves e o codigo que sera guardado e 
 //executado apenas quando ativado pela funçao
-function tocasompom(){
-    document.querySelector('#som_tecla_pom').play();
+function tocaSom(idElementoAudio){
+
+    document.querySelector(idElementoAudio).play();
 }
 /*assim o erro de auto execuçao da aplicação de "play" nao e barrada
 pela proteçao de executaçao dos navegadores pois so sera execut
@@ -30,3 +31,27 @@ constante --  nome da variavel --- recebe codigo */
 
 const listaDeTeclas = document.querySelectorAll('.tecla');
 
+
+
+/* criar condiçao aonde a repetiçao deve parar com contador
+apos as chaves havera a rotina com o laço enquanto houver repetiçao */
+
+let contador = 0
+
+while (contador < listaDeTeclas.length ){
+   
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+    
+
+    /* template striker */ 
+    const idAudio = `#som_${instrumento}`;
+
+    tecla.onclick = function(){
+        tocaSom(idAudio);
+    }
+    contador = contador + 1;
+
+    console.log(contador);
+    console.log(idAudio);
+}
