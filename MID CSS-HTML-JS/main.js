@@ -38,13 +38,13 @@ apos as chaves havera a rotina com o laço enquanto houver repetiçao */
 
 let contador = 0
 
-while (contador < listaDeTeclas.length ){
+/*while (contador < listaDeTeclas.length ){
    
     const tecla = listaDeTeclas[contador];
     const instrumento = tecla.classList[1];
     
 
-    /* template striker */ 
+    template striker 
     const idAudio = `#som_${instrumento}`;
 
     tecla.onclick = function(){
@@ -55,3 +55,15 @@ while (contador < listaDeTeclas.length ){
     console.log(contador);
     console.log(idAudio);
 }
+*/
+
+for (let contador = 0; contador < listaDeTeclas.length; contador++){
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+    const idAudio = `#som_${instrumento}`;
+    tecla.onclick = function(){
+        tocaSom(idAudio);
+    }
+}
+
+
