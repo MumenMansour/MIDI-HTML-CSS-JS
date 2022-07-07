@@ -2,10 +2,7 @@
 //declaraçao de parenteses em funçao e obrigatorio
 //tudo o que entrar dentro das chaves e o codigo que sera guardado e 
 //executado apenas quando ativado pela funçao
-function tocaSom(idElementoAudio){
 
-    document.querySelector(idElementoAudio).play();
-}
 /*assim o erro de auto execuçao da aplicação de "play" nao e barrada
 pela proteçao de executaçao dos navegadores pois so sera execut
 quando o usuario acionar o botao
@@ -18,8 +15,6 @@ a interaçao do usuario causando assim o erro de permisao de autoexec
 desenvolvimento para fazer ativaçao do onclick para listas 
 para melhor desenvolvimento manutençao e ediçao*/
 
-
-
 /*---------------REFERENCIAS-------------------
 sao declaradas e criadas com base no valor que vao receber 
 e ter que armazenar 
@@ -29,14 +24,8 @@ variavel
 
 constante --  nome da variavel --- recebe codigo */
 
-const listaDeTeclas = document.querySelectorAll('.tecla');
-
-
-
 /* criar condiçao aonde a repetiçao deve parar com contador
 apos as chaves havera a rotina com o laço enquanto houver repetiçao */
-
-let contador = 0
 
 /*while (contador < listaDeTeclas.length ){
    
@@ -57,6 +46,26 @@ let contador = 0
 }
 */
 
+function tocaSom(seletorAudio){
+   const elemento =  document.querySelector(seletorAudio);
+ 
+
+   if (elemento != null && elemento.localName === 'audio') {
+        console.log();
+        elemento.play();   
+    }
+    
+    else {
+        ('Elemento nao encontrado');
+        console.log('Elemento nao encontrado')
+    }
+
+}
+
+
+const listaDeTeclas = document.querySelectorAll('.tecla');
+let contador = 0
+
 for (let contador = 0; contador < listaDeTeclas.length; contador++){
     const tecla = listaDeTeclas[contador];
     const instrumento = tecla.classList[1];
@@ -67,14 +76,20 @@ for (let contador = 0; contador < listaDeTeclas.length; contador++){
 
     tecla.onkeydown = function (evento){
         console.log(evento.code)
-        if (evento.code === 'Sapace') {
+
+        if (evento.code === 'Sapace' || evento.code === 'Enter' ) {
             tecla.classList.add('ativa');
         }
+
+       // if (evento.code === 'Enter') {
+       //     tecla.classList.add('ativa');
+       // }
     }
 
     tecla.onkeyup = function () {
         tecla.classList.remove('ativa');
         }
+
 }
 
 
